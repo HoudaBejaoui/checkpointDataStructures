@@ -1,0 +1,63 @@
+ALGORITHM sum_2_array
+
+VAR
+    //variable declaration
+    tab1,tab2,tab3 : ARRAY_OF INTEGER[50];
+    x,y : INTEGER;
+    sum,i,j,k :INTEGER:=0;
+
+BEGIN
+    // filling du 1er array
+    write("taper la longeur du 1er tableau");
+    read (x);
+    FOR i FROM 0 TO x-1 DO
+        write("taper la valeur de la case",i);
+        read (tab1[i]);
+    END_FOR
+
+    // filling de 2eme array
+    write("taper la longeur de 2ème tableau");
+    read (y);
+    FOR j FROM 0 TO y-1 DO
+        write("taper la valeur de la case",j);
+        read (tab2[j]);
+    END_FOR
+
+    // check the elts of the 1st array in the 2nd
+    FOR i FROM 0 TO x-1 DO
+        elt:=false;
+        FOR j FROM 0 TO y-1 DO
+            IF (tab1[i]=tab2[j]) THEN
+                 elt:= true; BREAK;
+            END_IF
+        END_FOR
+        IF (elt=false) THEN
+            tab3[k]:=tab1[i];
+            k:= k+1;
+        END_IF
+    END_FOR
+
+    // check the elts of the 2nd array in the 1st
+    FOR j FROM 0 TO y-1 DO
+        elt:=false;
+        FOR i FROM 0 TO x-1 DO
+            IF (tab1[i]=tab2[j]) THEN
+                 elt:= true; BREAK;
+            END_IF
+        END_FOR
+        IF (elt=false) THEN
+            tab3[k]:=tab[j];
+            k:= k+1;
+        END_IF
+    END_FOR
+
+    // display of distinct elts
+    FOR k FROM 0 TO tab3.length-1 DO
+        write (tab3[k]);
+        sum := sum + tab3[k];
+    END_FOR
+
+    // display the sum of distinct elts
+    write (sum);
+    
+END
