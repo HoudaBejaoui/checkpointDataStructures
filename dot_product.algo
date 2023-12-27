@@ -1,0 +1,67 @@
+PROCEDURE calcul_ps(VAR sum: INTEGER, tab1,tab2: ARRAY_OF INTEGER) //calculate the dot of 2 vectors
+VAR
+    i : INTEGER;
+BEGIN
+    FOR i FROM 0 TO tab1.length-1 DO
+        sum:= sum + tab1[i] * tab2[i];
+    END_FOR
+END
+
+FUNCTION f_calcul_ps (sum: INTEGER, tab1,tab2: ARRAY_OF INTEGER) : INTEGER
+VAR
+    i : INTEGER;
+BEGIN
+    FOR i FROM 0 TO tab1.length-1 DO
+        sum:= sum + tab1[i] * tab2[i];
+    END_FOR
+    RETURN sum ;
+END
+
+ALGORITHM Dot product
+
+VAR 
+    //variable declaration
+    v, rslt : ARRAY_OF INTEGER[50];
+    ps :INTEGER;
+    i,j,n,m : INTEGER;
+    k: INTEGER := 0;
+
+
+BEGIN
+    
+    REPEAT
+        write("type the number of vectors.");
+        read (n);
+    UNTIL (n % 2=0)
+
+    REPEAT
+        write("type the length for each vector.");
+        read (m);
+    UNTIL (m > 0)
+    
+    // filling vectors
+    FOR i FROM 0 TO n-1 DO
+        FOR j FROM 0 TO m-1 DO
+            write("type the value of",j,"for vector",i);
+            read (v[j]);
+        END_FOR
+    END_FOR
+
+    FOR i FROM 0 TO n-2 STEP 2  DO
+        ps:=0;
+        calcul_ps (ps, v[i], v[i+1]); // calling the procedure
+        //calling the function ps:= f_calcul_ps (ps, v[i], v[i+1]);
+        
+        rslt[k]:= ps;
+        k:=k+1;
+        //test if 2 vectors are orthogonal
+        IF (ps=0) THEN
+            write("the 2 vectors",v[i],"and",v[i+1], "are orthogonal");
+        END_IF
+    END_FOR
+
+    FOR k FROM 0 TO rslt.length-1  DO
+        write(rslt[k]);       
+    END_FOR
+
+END
