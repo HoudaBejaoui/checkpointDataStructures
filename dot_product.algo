@@ -1,4 +1,4 @@
-PROCEDURE calcul_ps(VAR sum: INTEGER, tab1,tab2: ARRAY_OF INTEGER) //calculate the dot of 2 vectors
+PROCEDURE calcul_ps(VAR sum: INTEGER, tab1,tab2: ARRAY_OF INTEGER) //calculate the dot product of 2 vectors
 VAR
     i : INTEGER;
 BEGIN
