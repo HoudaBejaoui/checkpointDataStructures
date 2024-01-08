@@ -46,7 +46,7 @@ BEGIN
             END_IF
         END_FOR
         IF (elt=false) THEN
-            tab3[k]:=tab[j];
+            tab3[k]:=tab2[j];
             k:= k+1;
         END_IF
     END_FOR
